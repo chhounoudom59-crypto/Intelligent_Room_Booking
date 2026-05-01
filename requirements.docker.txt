@@ -1,0 +1,40 @@
+# ============================================================
+# Docker-optimized requirements (core web app only)
+# Excludes: Streamlit dashboard, heavy AI/ML libs
+# Use this in Dockerfile for faster builds
+# ============================================================
+
+# Django Core
+Django==4.2.7
+python-decouple==3.8
+python-dotenv>=1.0.0
+gunicorn==21.2.0
+whitenoise==6.6.0
+
+# Database
+PyMySQL==1.1.1
+cryptography==42.0.0
+
+# Authentication
+django-allauth==0.63.6
+social-auth-app-django==5.4.1
+
+# REST API
+djangorestframework>=3.14.0
+django-cors-headers>=4.3.0
+django-filter>=23.3
+
+# HTTP
+requests>=2.28.0,<3.0.0
+httpx>=0.24.0,<0.25.0
+
+# Image handling
+Pillow==10.4.0
+
+# Google APIs
+google-api-python-client>=2.100.0
+
+# AI Chatbot (lightweight — comment out if not needed)
+langchain>=0.1.0
+langchain-text-splitters>=0.0.1
+langchain-community>=0.0.1

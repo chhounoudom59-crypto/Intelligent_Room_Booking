@@ -14,11 +14,20 @@ RUN apt-get update \
         build-essential \
         pkg-config \
         netcat-openbsd \
+        ffmpeg \
+        libavformat-dev \
+        libavcodec-dev \
+        libavdevice-dev \
+        libavutil-dev \
+        libavfilter-dev \
+        libswscale-dev \
+        libswresample-dev \
+        python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Python dependencies (lean Docker build — excludes heavy AI/dashboard libs)
+COPY requirements.docker.txt /app/
+RUN pip install --no-cache-dir -r requirements.docker.txt
 
 # Copy project files
 COPY . /app/
